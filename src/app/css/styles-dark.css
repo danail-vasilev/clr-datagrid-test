@@ -1,0 +1,18 @@
+:root {
+    --vsan-main-background-color: rgb(27, 42, 50);
+    --vsan-background-color: rgb(34, 52, 60);
+    --vsan-background-color-hover: #29414e;
+    --vsan-background-color-selected: #324f61;
+    --vsan-border-color: #485764;
+    --vsan-busy-backdrop-background-color: rgba(0,0,0,.5);
+    --vsan-link-color: #49afd9;
+    --vsan-link-color-hover: #57c7ea;
+ }
+ 
+ ::-webkit-scrollbar {
+    background: var(--vsan-background-color-selected);
+ }
+ 
+ ::-webkit-scrollbar-thumb {
+    background: var(--vsan-background-color-hover);
+ }

@@ -1,0 +1,10 @@
+:root {
+    --vsan-main-background-color:#fafafa;
+    --vsan-background-color: rgb(255, 255, 255);
+    --vsan-background-color-hover: #eee;
+    --vsan-background-color-selected: #d9e4ea;
+    --vsan-border-color: #ccc;
+    --vsan-busy-backdrop-background-color: rgba(255,255,255,.6);
+    --vsan-link-color: #0079b8;
+    --vsan-link-color-hover: #004a70;
+ }

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MyApp</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+</head>
+<body>
+  <app-root></app-root>
+  <script type="text/javascript" src="mutationobserver.min.js"></script>
+  <script type="text/javascript" src="css-vars-ponyfill.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script>
+   cssVars({
+        watch: true,
+        onlyVars: true
+     });
+
+     (function() {
+        function loadTheme(isFirstLoad, theme) {
+           var themeName = theme.name;
+           var supportedThemeNames = ["light", "dark"];
+           if (supportedThemeNames.indexOf(theme.name) === -1) {
+              themeName = supportedThemeNames[0];
+           }
+           var themeStyleSheetLinkId = "theme-stylesheet-link";
+           var themeUrl = "theme-" + themeName + ".css";
+
+           var styleSheetLinkElement;
+           if (isFirstLoad) {
+              styleSheetLinkElement = document.createElement("link");
+              styleSheetLinkElement.setAttribute("rel", "stylesheet");
+              styleSheetLinkElement.setAttribute("type", "text/css");
+              styleSheetLinkElement.setAttribute("id", themeStyleSheetLinkId);
+              styleSheetLinkElement.setAttribute("href", themeUrl);
+
+              document.head.appendChild(styleSheetLinkElement);
+           } else {
+              styleSheetLinkElement = document.getElementById(themeStyleSheetLinkId);
+              styleSheetLinkElement.setAttribute("href", themeUrl);
+           }
+
+           document.documentElement.setAttribute("data-theme", themeName);
+        }
+
+        var sdk = true;
+        if (sdk) {
+          // sdk.event.onThemeChanged(loadTheme.bind(this, false));
+          loadTheme(true, {name: 'light'});
+        } else {
+           // No SDK support. Fall-back to light.
+           loadTheme(true, {name: 'light'});
+        }
+     })();
+  </script>
+</body>
+</html>
